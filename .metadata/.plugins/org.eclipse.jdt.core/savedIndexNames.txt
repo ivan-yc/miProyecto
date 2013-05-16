@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+D:\Universidad\CursoAndroid\Proyecto_Android\.metadata\.plugins\org.eclipse.jdt.core
+2815226043.index
+1628166031.index
+3014015640.index
