@@ -44,8 +44,7 @@ public class CampoBatalla extends Activity {
 			((ImageView)v).setImageResource(R.drawable.cruz);
 			
 			//TableRow t=(TableRow) findViewById(R.id.tableRow1);
-			int g=ganador();	
-			Log.e("TAG", "asdsa"+g);
+			int g=ganador();		
 			switch(i){
 				
 			case 1:

@@ -39,67 +39,16 @@ public class CampoBatalla extends Activity {
 	}
 	
 	public void cambiarBoton(View v){
-		int i=(Integer) v.getTag();
+		
 		if(turnoJ1){
 			((ImageView)v).setImageResource(R.drawable.cruz);
-			
+			((ImageView)v).getTag();
 			//TableRow t=(TableRow) findViewById(R.id.tableRow1);
-			int g=ganador();	
-			Log.e("TAG", "asdsa"+g);
-			switch(i){
-				
-			case 1:
-				matrizJuego[0][0]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 2:
-				matrizJuego[1][0]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 3:
-				matrizJuego[2][0]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 4:
-				matrizJuego[0][1]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 5:
-				matrizJuego[1][1]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 6:
-				matrizJuego[2][1]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 7:
-				matrizJuego[0][2]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 8:
-				matrizJuego[1][2]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 9:
-				matrizJuego[2][2]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			default:
-				Log.e("TAG", "Empate");
-				break;
-			}
-				//Log.e("TAG", "funciona");
-				
-            //Log.e("TAG", " clicked ID: "+((ImageView)v).getTag());
+			((ImageView)v).getTag();
+			int i=(Integer) ((ImageView)v).getTag();
+			if(i==1)
+			
+            Log.e("TAG", " clicked ID: "+((ImageView)v).getTag());
 			turnoJ1=false;
 			
 			
@@ -107,60 +56,6 @@ public class CampoBatalla extends Activity {
 		else
 			if(!turnoJ2){
 				((ImageView)v).setImageResource(R.drawable.circulo);
-				int g=ganador();
-				Log.e("TAG", "asdsa"+g);
-				switch(i){
-				
-				case 1:
-					matrizJuego[0][0]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 2:
-					matrizJuego[1][0]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 3:
-					matrizJuego[2][0]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 4:
-					matrizJuego[0][1]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 5:
-					matrizJuego[1][1]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 6:
-					matrizJuego[2][1]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 7:
-					matrizJuego[0][2]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 8:
-					matrizJuego[1][2]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 9:
-					matrizJuego[2][2]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				default:
-					Log.e("TAG", "Emapte");
-					break;
-					
-				}
 				turnoJ1=true;
 			}
 	}
