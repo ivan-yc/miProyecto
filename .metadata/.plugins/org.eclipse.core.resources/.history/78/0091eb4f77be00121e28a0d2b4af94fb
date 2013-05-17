@@ -1,0 +1,17 @@
+package com.example.tresenraya;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+
+public class CampoBatalla extends Activity {
+	public void onCreate(Bundle b){
+		super.onCreate(b);
+		setContentView(R.layout.pantalla_juego);
+	}
+	
+	public void cambiarBoton(View v){
+		
+	}
+	
+}

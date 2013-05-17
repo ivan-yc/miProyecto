@@ -1,0 +1,35 @@
+package com.example.tresenraya;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TableRow;
+
+public class CampoBatalla extends Activity {
+	ImageView im []=new ImageView[9];
+	boolean jugador1=true;
+	boolean jugador2=false;
+	public void onCreate(Bundle b){
+		super.onCreate(b);
+		setContentView(R.layout.pantalla_juego);
+	}
+	
+	public void cambiarBoton(View v){
+		//im.setImageResource(R.drawable.cruz);
+		if(jugador1){
+			((ImageView)v).setImageResource(R.drawable.cruz);
+			jugador2=false;
+		}
+		else{
+			((ImageView)v).setImageResource(R.drawable.circulo);
+			jugador1=true;
+		}
+	}
+	
+	public void bReset(){
+		
+		
+	}
+	
+}
