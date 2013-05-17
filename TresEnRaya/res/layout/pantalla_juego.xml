@@ -40,7 +40,7 @@
                 android:layout_height="90dp"
                 android:layout_weight="0.33"
                 android:onClick="cambiarBoton"
-                android:src="@drawable/circulo" />
+                android:src="@drawable/vacio" />
 
             <ImageView
                 android:id="@+id/c3"
@@ -121,12 +121,12 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Reset"
-            android:onClick="bReset"/>
+            android:onClick="bReset"
+            android:text="Reset" />
 
     </RelativeLayout>
 

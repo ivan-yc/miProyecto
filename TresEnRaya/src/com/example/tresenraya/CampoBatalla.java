@@ -1,12 +1,10 @@
 package com.example.tresenraya;
 
 import android.app.Activity;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TableRow;
-import android.widget.Toast;
 
 public class CampoBatalla extends Activity {
 	
@@ -15,7 +13,7 @@ public class CampoBatalla extends Activity {
 	private boolean turnoJ2=false;
 	
 	private int fil,col=3;
-	private int [][] matrizJuego;
+	private int [][] matrizJuego=new int[fil][col];
 	private int ganaJ1=0;
 	private int ganaJ2=1;
 	private int empate=2;
@@ -23,6 +21,7 @@ public class CampoBatalla extends Activity {
 	public void onCreate(Bundle b){
 		super.onCreate(b);
 		setContentView(R.layout.pantalla_juego);
+		
 		
 		ImageView im2 []=new ImageView[9];
 		im2[0]=(ImageView) findViewById(R.id.c1);
@@ -37,132 +36,39 @@ public class CampoBatalla extends Activity {
 		for(int i=0;i<im.length;i++)
 			im2[i].setTag(i+1);
 	}
-	
+	public void VerificarGanador(){
+		
+	}
+	//Actualizar la figura al clickearla y retorna el TAG
 	public void cambiarBoton(View v){
-		int i=(Integer) v.getTag();
+		int tag=(Integer)v.getTag();
+		//Se intentaba conseguir el contenido del imageview. Si existiera un contenido diferente de vacio no se podria modificar
+		//ImageView aux=(ImageView)findViewById(R.drawable.vacio);
+		//BitmapDrawable dr = (BitmapDrawable)aux.getDrawable();
+		//BitmapDrawable bm = (BitmapDrawable)((ImageView)v).getDrawable();
+		;
 		if(turnoJ1){
 			((ImageView)v).setImageResource(R.drawable.cruz);
 			
 			//TableRow t=(TableRow) findViewById(R.id.tableRow1);
-			int g=ganador();	
-			Log.e("TAG", "asdsa"+g);
-			switch(i){
-				
-			case 1:
-				matrizJuego[0][0]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 2:
-				matrizJuego[1][0]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 3:
-				matrizJuego[2][0]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 4:
-				matrizJuego[0][1]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 5:
-				matrizJuego[1][1]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 6:
-				matrizJuego[2][1]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 7:
-				matrizJuego[0][2]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 8:
-				matrizJuego[1][2]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			case 9:
-				matrizJuego[2][2]=0;
-				if(g==0)
-					Log.e("TAG", "Player1");
-				break;
-			default:
-				Log.e("TAG", "Empate");
-				break;
-			}
-				//Log.e("TAG", "funciona");
+			int g=this.ganador();	
+			//Log.e("TAG", "asdsa"+g);
+			//int g=1;
+					//Log.e("TAG", "funciona");
 				
             //Log.e("TAG", " clicked ID: "+((ImageView)v).getTag());
 			turnoJ1=false;
-			
-			
 		}
 		else
 			if(!turnoJ2){
 				((ImageView)v).setImageResource(R.drawable.circulo);
-				int g=ganador();
-				Log.e("TAG", "asdsa"+g);
-				switch(i){
-				
-				case 1:
-					matrizJuego[0][0]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 2:
-					matrizJuego[1][0]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 3:
-					matrizJuego[2][0]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 4:
-					matrizJuego[0][1]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 5:
-					matrizJuego[1][1]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 6:
-					matrizJuego[2][1]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 7:
-					matrizJuego[0][2]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 8:
-					matrizJuego[1][2]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				case 9:
-					matrizJuego[2][2]=1;
-					if(g==1)
-						Log.e("TAG", "Player1");
-					break;
-				default:
-					Log.e("TAG", "Emapte");
-					break;
-					
-				}
+				int g=this.ganador();
+				//Log.e("TAG", "asdsa"+g);
+				//int g=2;
+								
 				turnoJ1=true;
 			}
+		//return tag;
 	}
 	
 	public void bReset(View v){
@@ -182,30 +88,29 @@ public class CampoBatalla extends Activity {
 	}
 	
 	public void init(){
-		matrizJuego=new int[fil][col];
 		for(int i=0;i<fil;i++)
 			for(int j=0;j<col;j++)
 				matrizJuego[i][j]=-1;
 	}
 	
 	public int ganador(){
-		
+		init();
 		//Tres en raya Columnas
 		for(int i=0;i<fil;i++){
 			int j=0;
-			if(matrizJuego[0][0]!=-1 && matrizJuego[i][j]==matrizJuego[i][j+1]
+			if(matrizJuego[i][j]!=-1 && matrizJuego[i][j]==matrizJuego[i][j+1]
 					&& matrizJuego[i][j+1]==matrizJuego[i][j+2])
 				return matrizJuego[i][j];
 		}
 		//Tres en raya Filas
-
+		/*
 		for(int i=0;i<col;i++){
 			int j=0;
 			if(matrizJuego[j][i]!=-1 && matrizJuego[j][i]==matrizJuego[j+1][i]
 					&& matrizJuego[j+1][i]==matrizJuego[j+2][i])
 				return matrizJuego[j][i];
 		}
-		
+		/*
 		//Tres en raya Diagonales
 		if(matrizJuego[0][0]!=-1 && matrizJuego[0][0]==matrizJuego[1][1] 
 				&& matrizJuego[1][1]==matrizJuego[2][2])
@@ -213,7 +118,7 @@ public class CampoBatalla extends Activity {
 		else
 			if(matrizJuego[2][0]!=-1 && matrizJuego[2][0]==matrizJuego[1][1] 
 				&& matrizJuego[1][1]==matrizJuego[0][2])
-				return matrizJuego[2][0];
+				return matrizJuego[2][0];*/
 		
 		//No hay ganador
 		return empate;
